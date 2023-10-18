@@ -94,11 +94,6 @@ function getProductType(typeSelectEls) {
     return product;
 }
 
-document.addEventListener("DOMContentLoaded", (event) => {
-    let productsEl = document.getElementById("calc-radio-group");
-    loadProductsEl(productsEl)
-});
-
 function formStandartSelectOption() {
     let option = document.createElement("option");
     let name = document.createTextNode("Select subproduct");
@@ -228,3 +223,15 @@ function calculate() {
     let result = calcResult(quantity, productPrice, productMultiplier);
     writeResult(result);    
 }
+
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    let productsEl = document.getElementById("calc-radio-group");
+    loadProductsEl(productsEl);
+
+    let selectEl = document.getElementById("calc-radio-group");
+    selectEl.addEventListener("change", changeProductType);
+
+    let buttonEl = document.getElementById("calc-button");
+    buttonEl.addEventListener("click", calculate);
+});
